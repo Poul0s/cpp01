@@ -6,7 +6,7 @@
 /*   By: psalame <psalame@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 17:05:13 by psalame           #+#    #+#             */
-/*   Updated: 2023/12/15 18:06:15 by psalame          ###   ########.fr       */
+/*   Updated: 2023/12/15 18:36:56 by psalame          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,13 @@ int	ft_stoi(std::string str)
 int	main(void)
 {
 	std::string	name = "Zombie";
-	std::string	nbZombiesStr = "5";
+	std::string	nbZombiesStr = "0";
 	int	nbZombies;
 	int	i;
 	Zombie	*horde;
 
 	std::cout << "Enter zombies names : ";
 	std::getline(std::cin, name);
-	
 	std::cout << "Enter zombies number : ";
 	std::getline(std::cin, nbZombiesStr);
 	nbZombies = ft_stoi(nbZombiesStr);
@@ -55,19 +54,11 @@ int	main(void)
 		std::cout << "Alloc error" << std::endl;
 	else
 	{
-		while (i < nbZombies + 2)
+		while (i < nbZombies) // if +1 must create invalid read
 		{
-			try
-			{
-				if (i >= (sizeof(horde) / sizeof(Zombie)))
-					throw std::out_of_range ("no more zombies in horde");
-				horde[1000].announce();
-			}
-			catch (const std::out_of_range& e)
-			{
-				std::cout << "Out of range !" << std::endl;
-			}
+			horde[i].announce();
 			i++;
 		}
+		delete[] horde;
 	}
 }
