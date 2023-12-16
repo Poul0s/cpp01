@@ -1,26 +1,41 @@
-CC	=	c++
+CC			=	c++
 
-CFLAGS	=	-Wall -Wextra -Werror -std=c++98
+CFLAGS		=	-Wall -Wextra -Werror -std=c++98
 
-SRC		=	
+SRC			=	replace.cpp \
+				main.cpp \
 
-OBJ		=	$(addprefix obj/, $(SRC:.cpp=.o))
+OBJ			=	$(addprefix obj/, $(SRC:.cpp=.o))
 
-OBJ_DIR	=	$(sort $(dir $(OBJ)))
+OBJ_DIR		=	$(sort $(dir $(OBJ)))
 
-HEADER	=	
+SRCT		=	replace.cpp \
+				test.cpp \
 
-NAME	=	
+OBJT		=	$(addprefix obj/, $(SRCT:.cpp=.o))
+
+OBJT_DIR	=	$(sort $(dir $(OBJT)))
+
+HEADER		=	
+
+NAME		=	replace
+
+TESTER		=	replace_tester
 
 all: $(NAME)
+
+test: $(TESTER)
 
 $(NAME): $(OBJ_DIR) $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
+$(TESTER): $(OBJT_DIR) $(OBJT)
+	$(CC) $(CFLAGS) $(OBJT) -o $(TESTER)
+
 obj/%.o: %.cpp
 	$(CC) $(CFLAGS) $(HEADER) $^ -o $@ -c
 
-$(OBJ_DIR):
+$(sort $(OBJ_DIR) $(OBJT_DIR)):
 	@mkdir -p $@
 
 clean:
@@ -28,7 +43,8 @@ clean:
 
 fclean: clean
 	rm -rf $(NAME)
+	rm -rf $(TESTER)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all test clean fclean re
