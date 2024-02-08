@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psalame <psalame@student.42.fr>            +#+  +:+       +#+        */
+/*   By: psalame <psalame@student.42angouleme.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 00:10:21 by psalame           #+#    #+#             */
-/*   Updated: 2023/12/17 14:09:29 by psalame          ###   ########.fr       */
+/*   Updated: 2024/02/08 16:04:01 by psalame          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Harl {
 
 	private:
 		std::string*	functions_name;
-		void			(Harl::**functions_pointer)(void); // https://websites.umich.edu/~eecs381/handouts/Pointers_to_memberfuncs.pdf 
+		void			(Harl::**functions_pointer)(void);
 		void	debug( void );
 		void	info( void );
 		void	warning( void );
