@@ -24,13 +24,15 @@ TESTER		=	replace_tester
 
 all: $(NAME)
 
-test: $(TESTER)
+test: $(OBJT_DIR) $(OBJT)
+	@$(CC) $(CFLAGS) $(OBJT) -o $(TESTER)
+	@./$(TESTER)
+	@rm -rf __test __test.replace
 
 $(NAME): $(OBJ_DIR) $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
-$(TESTER): $(OBJT_DIR) $(OBJT)
-	$(CC) $(CFLAGS) $(OBJT) -o $(TESTER)
+$(TESTER): 
 
 obj/%.o: %.cpp
 	$(CC) $(CFLAGS) $(HEADER) $^ -o $@ -c

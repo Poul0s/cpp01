@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psalame <psalame@student.42.fr>            +#+  +:+       +#+        */
+/*   By: psalame <psalame@student.42angouleme.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 22:26:20 by psalame           #+#    #+#             */
-/*   Updated: 2023/12/16 23:27:58 by psalame          ###   ########.fr       */
+/*   Updated: 2024/02/08 15:22:56 by psalame          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static bool	replace_file_content(std::string newContent)
 	if (!file.is_open())
 		return (false);
 	file << newContent;
+	file.close();
 	return (true);
 }
 
@@ -47,6 +48,7 @@ static bool	get_file_content(std::string& res)
 	{
 		res += c;
 	}
+	file.close();
 	return (true);
 }
 
