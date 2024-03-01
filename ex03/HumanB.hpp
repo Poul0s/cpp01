@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psalame <psalame@student.42.fr>            +#+  +:+       +#+        */
+/*   By: psalame <psalame@student.42angouleme.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:27:48 by psalame           #+#    #+#             */
-/*   Updated: 2023/12/15 20:12:45 by psalame          ###   ########.fr       */
+/*   Updated: 2024/03/01 14:25:38 by psalame          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ class HumanB {
 		void	attack( void );
 
 	private:
-		std::string name;
-		Weapon *weapon;
+		std::string _Name;
+		Weapon *_Weapon;
 };
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psalame <psalame@student.42.fr>            +#+  +:+       +#+        */
+/*   By: psalame <psalame@student.42angouleme.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 22:30:17 by psalame           #+#    #+#             */
-/*   Updated: 2023/12/14 22:38:58 by psalame          ###   ########.fr       */
+/*   Updated: 2024/03/01 14:18:14 by psalame          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Zombie {
 		void	announce( void );
 
 	private:
-		std::string name;
+		std::string _Name;
 };
 
 #endif
