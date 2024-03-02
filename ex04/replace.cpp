@@ -6,7 +6,7 @@
 /*   By: psalame <psalame@student.42angouleme.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 14:54:28 by psalame           #+#    #+#             */
-/*   Updated: 2024/02/08 15:59:54 by psalame          ###   ########.fr       */
+/*   Updated: 2024/03/02 15:42:42 by psalame          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,26 @@
 #include <fstream>
 #include <cstring>
 
+static std::string	readInStream(std::ifstream &stream)
+{
+	std::string	buffer;
+	std::string	res;
+
+	while (stream.good())
+	{
+		std::getline(stream, buffer);
+		res += buffer;
+		if (!stream.eof())
+			res += "\n";
+	}
+	return (res);
+}
+
 bool	file_replace(std::string filename, std::string src, std::string dest)
 {
-	std::ifstream	file_from; 
-	std::ofstream	file_to; 
-	char			chr;
-	std::string		str = "";
+	std::ifstream	file_from;
+	std::ofstream	file_to;
+	std::string		str;
 	size_t			pos;
 
 	file_from.open(filename.c_str(), std::ios_base::in);
@@ -35,19 +49,19 @@ bool	file_replace(std::string filename, std::string src, std::string dest)
 		file_from.close();
 		return (false);
 	}
-	while (file_from.good())
-	{
-		file_from.get(chr);
-		if (file_from.good())
-			str += chr;
-	}
 
-	pos = str.find(src);
-	while (pos != std::string::npos)
+	str = readInStream(file_from);
+	pos = 0;
+	do
 	{
-		str.replace(pos, src.size(), dest);
-		pos = str.find(src, pos + dest.size());
-	}
+		pos = str.find(src, pos);
+		if (pos != std::string::npos)
+		{
+			str.erase(pos, src.size());
+			str.insert(pos, dest);
+			pos += dest.size();
+		}
+	} while (pos != std::string::npos);
 
 	file_to << str;
 	file_from.close();
