@@ -6,7 +6,7 @@
 /*   By: psalame <psalame@student.42angouleme.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 22:26:20 by psalame           #+#    #+#             */
-/*   Updated: 2024/02/08 15:22:56 by psalame          ###   ########.fr       */
+/*   Updated: 2024/03/08 19:28:32 by psalame          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,11 @@ int	main(void)
 	test("Test for replacing whole word", TEST_3, "assis", "sit");
 	test("Test for replacing word with repetition of letter before word", TEST_4, "amet", "et");
 	test("Test for replacing last char of file", TEST_5, "!", ".");
+	try {
+		std::cout << "Test for sending empty 'src' argument : ";
+		file_replace("__test", "", "aa");
+		std::cout << "KO" << std::endl;
+	} catch (std::invalid_argument) {
+		std::cout << "OK" << std::endl;
+	}
 }

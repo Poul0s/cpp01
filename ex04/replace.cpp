@@ -6,7 +6,7 @@
 /*   By: psalame <psalame@student.42angouleme.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 14:54:28 by psalame           #+#    #+#             */
-/*   Updated: 2024/03/02 15:42:42 by psalame          ###   ########.fr       */
+/*   Updated: 2024/03/04 15:51:17 by psalame          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ static std::string	readInStream(std::ifstream &stream)
 
 bool	file_replace(std::string filename, std::string src, std::string dest)
 {
+	if (src.size() == 0)
+		throw std::invalid_argument("\"src\" argument must not be empty.");
+
 	std::ifstream	file_from;
 	std::ofstream	file_to;
 	std::string		str;
